@@ -60,6 +60,17 @@ python manage.py runserver
 
 ---
 
+## 📂 File Structure
+```plaintext
+movie-booking-system/
+├── movie_booking_system/ # Django project config
+├── booking/ # App: models, views, serializers, urls
+├── templates/ # HTML templates
+├── manage.py # Django management script
+├── requirements.txt # Project dependencies
+└── README.md # This file
+```
+
 ## 🔐 JWT Authentication & API Usage
 
 - **Signup:**  
@@ -78,3 +89,51 @@ python manage.py runserver
 `POST /api/token/refresh/`  
 `Payload:{ "refresh": "<refresh-token>" }`
 `Response returns a new access token.`
+
+
+---
+
+## 📚 API Endpoints
+
+| Endpoint                    | Method | Auth Required | Description                          |
+|-----------------------------|--------|---------------|------------------------------------|
+| /signup                     | POST   | ❌            | Register new user                   |
+| /login                      | POST   | ❌            | Login and receive JWT tokens       |
+| /movies/                    | GET    | ✅            | List all movies                    |
+| /movies/<id>/shows/         | GET    | ✅            | List shows for a movie             |
+| /shows/<id>/book/           | POST   | ✅            | Book seat(s) for a show            |
+| /my-bookings/               | GET    | ✅            | List logged-in user bookings       |
+| /bookings/<id>/cancel/      | POST   | ✅            | Cancel your own booking            |
+| /swagger/                   | GET    | ❌            | API interactive Swagger docs       |
+
+---
+
+## 📄 Swagger API Documentation
+
+`Browse fully interactive API docs at: [http://localhost:8000/swagger/](http://localhost:8000/swagger/)`
+`Django Login with your credentials`
+`Use the "Authorize" button in Swagger to enter JWT: Bearer <token>`
+- In POST /token/  -> write your username & password  -> JWT Token will be generated
+
+---
+
+## 🎯 Business Logic
+
+- ❌ No double booking: a seat cannot be reserved twice.  
+- 🚫 No overbooking: bookings capped by show capacity.  
+- 🔄 Booking cancellation frees the seat.  
+- 🔒 Users can only view and cancel their own bookings.  
+- 🛡️ Input validation with helpful error messages.
+
+---
+
+## 🌟 Bonus Features
+
+- 🔁 Retry and atomic transaction logic for concurrency.  
+- 🚨 Clear and user-friendly error handling.  
+- 🔑 Strict security and ownership validations.  
+- 📚 Modular codebase and clean design.
+
+---
+
+---
