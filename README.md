@@ -110,7 +110,7 @@ movie-booking-system/
 
 ## 📄 Swagger API Documentation
 
-`Browse fully interactive API docs at: [http://localhost:8000/swagger/](http://localhost:8000/swagger/)`
+`Browse fully interactive API docs at: [http://localhost:8000/swagger/]`
 `Django Login with your credentials`
 `Use the "Authorize" button in Swagger to enter JWT: Bearer <token>`
 - In POST /token/  -> write your username & password  -> JWT Token will be generated
