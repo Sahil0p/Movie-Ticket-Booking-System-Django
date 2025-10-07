@@ -114,25 +114,6 @@ movie-booking-system/
 
 ---
 
-## 🎯 Business Logic
-
-- ❌ No double booking: a seat cannot be reserved twice.  
-- 🚫 No overbooking: bookings capped by show capacity.  
-- 🔄 Booking cancellation frees the seat.  
-- 🔒 Users can only view and cancel their own bookings.  
-- 🛡️ Input validation with helpful error messages.
-
----
-
-## 🌟 Bonus Features
-
-- 🔁 Retry and atomic transaction logic for concurrency.  
-- 🚨 Clear and user-friendly error handling.  
-- 🔑 Strict security and ownership validations.  
-- 📚 Modular codebase and clean design.
-
----
-
 ## 🎯 Approach
 
 ### ⚙️ Setup
@@ -159,3 +140,24 @@ The system ensures no double bookings or overbookings occur. Canceling a booking
 
 - 📚 **Documentation and Testing:**  
 Complete Swagger docs detail each API endpoint's requests and responses, including JWT security. Modular and clean code ensures maintainability and testability.
+
+---
+
+## 🎯 Business Logic
+
+- ❌ No double booking: a seat cannot be reserved twice.  
+- 🚫 No overbooking: bookings capped by show capacity.  
+- 🔄 Booking cancellation frees the seat.  
+- 🔒 Users can only view and cancel their own bookings.  
+- 🛡️ Input validation with helpful error messages.
+
+---
+
+## 🌟 Bonus Features
+
+- 🔁 Retry and atomic transaction logic for concurrency.  
+- 🚨 Clear and user-friendly error handling.  
+- 🔑 Strict security and ownership validations.  
+- 📚 Modular codebase and clean design.
+
+---
