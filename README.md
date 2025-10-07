@@ -110,9 +110,9 @@ movie-booking-system/
 
 ## 📄 Swagger API Documentation
 
-`Browse fully interactive API docs at: [http://localhost:8000/swagger/]`
-`Django Login with your credentials`
-`Use the "Authorize" button in Swagger to enter JWT: Bearer <token>`
+- Browse fully interactive API docs at: [http://localhost:8000/swagger/]`
+- Django Login with your credentials
+- Use the "Authorize" button in Swagger to enter JWT: Bearer <token>
 - In POST /token/  -> write your username & password  -> JWT Token will be generated
 
 ---
@@ -135,5 +135,39 @@ movie-booking-system/
 - 📚 Modular codebase and clean design.
 
 ---
+## 🎯 Business Logic & Approach
 
+### Setup
+
+This project utilizes Python, Django, and the Django REST Framework to deliver a robust, API-first backend. All dependencies are captured in `requirements.txt`, with a recommended virtual environment for isolated installation.
+
+Database migrations ensure the schema is prepared before running. The JWT mechanism is employed to secure API endpoints while providing stateless authentication. Swagger integration facilitates seamless API exploration.
+
+### Development Approach
+
+- **Authentication and Security:**  
+Custom signup and login endpoints issue JWT tokens for secure, protected API access. JWT middleware validates every request.
+
+- **Relational Data Models:**  
+The `Movie`, `Show`, and `Booking` models capture all data with defined foreign keys. Each `Booking` is explicitly linked to a user and a show.
+
+- **REST API Architecture:**  
+The endpoints follow REST conventions, with POST used for mutations and GET for retrieval. The booking logic uses atomic transactions and retries to prevent concurrency issues.
+
+- **Business Rules Enforcement:**  
+The system ensures no double bookings or overbookings occur. Canceling a booking frees up seats efficiently. Input validation and error handling provide a pleasant user experience.
+
+- **Documentation and Testing:**  
+Complete Swagger docs detail each API endpoint's requests and responses, including JWT security. Modular and clean code ensures maintainability and testability.
+
+---
+
+## 🌟 Bonus Features
+
+- Atomic retry logic on seat booking to avoid race conditions  
+- Structured error messages for invalid operations  
+- Enforcement of booking ownership for cancellation  
+- Clean separation of concerns across Django apps and views  
+
+---
 ---
