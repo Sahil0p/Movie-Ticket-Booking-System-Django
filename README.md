@@ -127,29 +127,27 @@ movie-booking-system/
 ### 🚧 Development Approach
 
 - 🔐 **Authentication and Security:**
-```bash
-Custom signup and login endpoints issue JWT tokens for secure, protected API access. JWT middleware validates every request.
-```
+`Custom signup and login endpoints issue JWT tokens for secure, protected API access. JWT middleware validates every request.`
 
 - 🗃️ **Relational Data Models:**
-```bash
-The \`Movie\`, \`Show\`, and \`Booking\` models capture all data with defined foreign keys. Each \`Booking\` is explicitly linked to a user and a show.
-```
+
+`The Movie, Show, and Booking models capture all data with defined foreign keys. Each (Booking) is explicitly linked to a user and a show.`
+
 
 - ⚙️ **REST API Architecture:**
-```bash
-The endpoints follow REST conventions, with POST used for mutations and GET for retrieval. The booking logic uses atomic transactions and retries to prevent concurrency issues.
-```
+
+`The endpoints follow REST conventions, with POST used for mutations and GET for retrieval. The booking logic uses atomic transactions and retries to prevent concurrency issues.`
+
 
 - ✅ **Business Rules Enforcement:**  
-```bash
-The system ensures no double bookings or overbookings occur. Canceling a booking frees up seats efficiently. Input validation and error handling provide a pleasant user experience.
-```
+
+`The system ensures no double bookings or overbookings occur. Canceling a booking frees up seats efficiently. Input validation and error handling provide a pleasant user experience.`
+
 
 - 📚 **Documentation and Testing:**
-```bash
-Complete Swagger docs detail each API endpoint's requests and responses, including JWT security. Modular and clean code ensures maintainability and testability.
-```
+
+`Complete Swagger docs detail each API endpoint's requests and responses, including JWT security. Modular and clean code ensures maintainability and testability.`
+
 ---
 
 ## 🎯 Business Logic
