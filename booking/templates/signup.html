@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}Signup{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-center align-items-center" style="min-height: 75vh;">
+  <div class="border p-4 shadow rounded" style="min-width: 320px; max-width: 400px; width: 100%;">
+    <h2 class="mb-4 text-center">Signup</h2>
+    <form id="signupForm" novalidate>
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input name="username" type="text" id="username" class="form-control" required />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input name="password" type="password" id="password" class="form-control" required />
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Signup</button>
+    </form>
+
+    <div id="errorMsg" class="alert alert-danger mt-3" style="display:none;"></div>
+    <div id="successMsg" class="alert alert-success mt-3" style="display:none;"></div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('signupForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const username = this.username.value.trim();
+    const password = this.password.value.trim();
+    const errorDiv = document.getElementById('errorMsg');
+    const successDiv = document.getElementById('successMsg');
+    errorDiv.style.display = 'none';
+    successDiv.style.display = 'none';
+
+    if (!username || !password) {
+      errorDiv.textContent = "All fields are required.";
+      errorDiv.style.display = 'block';
+      return;
+    }
+
+    try {
+      const response = await fetch('/signup/', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "X-CSRFToken": "{{ csrf_token }}"
+        },
+        body: new URLSearchParams({username, password})
+      });
+
+      if (response.ok) {
+        successDiv.textContent = "Signup successful! Redirecting to login page...";
+        successDiv.style.display = 'block';
+        setTimeout(() => window.location.href = "/login/", 2000);
+      } else {
+        const text = await response.text();
+        errorDiv.textContent = text || "Error during signup.";
+        errorDiv.style.display = "block";
+      }
+    } catch (error) {
+      errorDiv.textContent = "Network error: " + error.message;
+      errorDiv.style.display = 'block';
+    }
+  });
+</script>
+{% endblock %}

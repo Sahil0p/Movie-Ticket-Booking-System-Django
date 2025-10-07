@@ -1,0 +1,84 @@
+{
+    "info": {
+      "name": "Movie Ticket Booking API",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "User Signup",
+        "request": {
+          "method": "POST",
+          "header": [{"key": "Content-Type", "value": "application/json"}],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"password123\"\n}"
+          },
+          "url": {"raw": "{{base_url}}/signup", "host": ["{{base_url}}"], "path": ["signup"]}
+        }
+      },
+      {
+        "name": "User Login - Get JWT",
+        "request": {
+          "method": "POST",
+          "header": [{"key": "Content-Type", "value": "application/json"}],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"password123\"\n}"
+          },
+          "url": {"raw": "{{base_url}}/api/token/", "host": ["{{base_url}}"], "path": ["api", "token"]}
+        }
+      },
+      {
+        "name": "List Movies",
+        "request": {
+          "method": "GET",
+          "header": [{"key": "Authorization", "value": "Bearer {{access_token}}"}],
+          "url": {"raw": "{{base_url}}/movies/", "host": ["{{base_url}}"], "path": ["movies"]}
+        }
+      },
+      {
+        "name": "List Shows for Movie",
+        "request": {
+          "method": "GET",
+          "header": [{"key": "Authorization", "value": "Bearer {{access_token}}"}],
+          "url": {"raw": "{{base_url}}/movies/1/shows/", "host": ["{{base_url}}"], "path": ["movies", "1", "shows"]}
+        }
+      },
+      {
+        "name": "Book a Seat",
+        "request": {
+          "method": "POST",
+          "header": [
+            {"key": "Authorization", "value": "Bearer {{access_token}}"},
+            {"key": "Content-Type", "value": "application/json"}
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"seat_number\": 5\n}"
+          },
+          "url": {"raw": "{{base_url}}/shows/1/book/", "host": ["{{base_url}}"], "path": ["shows", "1", "book"]}
+        }
+      },
+      {
+        "name": "Cancel Booking",
+        "request": {
+          "method": "POST",
+          "header": [{"key": "Authorization", "value": "Bearer {{access_token}}"}],
+          "url": {"raw": "{{base_url}}/bookings/1/cancel/", "host": ["{{base_url}}"], "path": ["bookings", "1", "cancel"]}
+        }
+      },
+      {
+        "name": "View My Bookings",
+        "request": {
+          "method": "GET",
+          "header": [{"key": "Authorization", "value": "Bearer {{access_token}}"}],
+          "url": {"raw": "{{base_url}}/my-bookings/", "host": ["{{base_url}}"], "path": ["my-bookings"]}
+        }
+      }
+    ],
+    "variable": [
+      {"key": "base_url", "value": "http://127.0.0.1:8000"},
+      {"key": "access_token", "value": ""}
+    ]
+  }
+  

@@ -1,0 +1,68 @@
+
+{% extends 'base.html' %}
+{% load booking_extras %}
+{% block title %}Book Seats{% endblock %}
+
+{% block content %}
+<h2>Book Seats for "{{ show.movie.title }}"</h2>
+<p>Screen: {{ show.screen_name }}</p>
+<p>Date & Time: {{ show.date_time }}</p>
+
+<style>
+  .seat-grid { display: flex; flex-wrap: wrap; max-width: 360px; margin-bottom: 20px; }
+  .seat-btn {
+    width: 42px; height: 42px; margin: 4px; border: none; border-radius: 6px;
+    color: #fff; font-weight: bold; cursor: pointer; transition: filter .2s;
+  }
+  .seat-btn.available { background: #43a047; }
+  .seat-btn.occupied { background: #bdbdbd; cursor: not-allowed; }
+  .seat-btn.selected { background: #1976d2; }
+</style>
+
+<form method="post" id="seatBookForm" novalidate>
+  {% csrf_token %}
+  <div class="mb-3 seat-grid" id="seatGrid">
+    {% for seat in 1|get_range:show.total_seats %}
+      {% if seat in occupied_seats %}
+        <button type="button" class="seat-btn occupied" disabled>{{ seat }}</button>
+      {% else %}
+        <button type="button" class="seat-btn available" data-seat="{{ seat }}">{{ seat }}</button>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <input type="hidden" name="seat_numbers" id="seat_numbers" required />
+  <div class="mb-3">
+    <label for="seat_numbers_visible" class="form-label">Selected Seats</label>
+    <input type="text" id="seat_numbers_visible" class="form-control" readonly style="background:#f6f6f6;">
+  </div>
+  <button type="submit" class="btn btn-primary">Book Seats</button>
+</form>
+
+<script>
+  const grid = document.getElementById('seatGrid');
+  const selectedSeats = new Set();
+
+  grid.addEventListener('click', function(e) {
+    if (e.target.classList.contains('available')) {
+      const seat = e.target.getAttribute('data-seat');
+      if (selectedSeats.has(seat)) {
+        selectedSeats.delete(seat);
+        e.target.classList.remove('selected');
+      } else {
+        selectedSeats.add(seat);
+        e.target.classList.add('selected');
+      }
+      const seatList = Array.from(selectedSeats);
+      document.getElementById('seat_numbers').value = seatList.join(',');
+      document.getElementById('seat_numbers_visible').value = seatList.join(', ');
+    }
+  });
+
+  document.getElementById('seatBookForm').addEventListener('submit', function(e) {
+    if (selectedSeats.size === 0) {
+      alert("Please select at least one seat.");
+      e.preventDefault();
+    }
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load tz %}
+{% block title %}Shows for {{ movie.title }}{% endblock %}
+{% block content %}
+<h2 class="my-4">Shows for <span class="text-primary">{{ movie.title }}</span></h2>
+<div class="table-responsive">
+  <table class="table table-striped table-hover align-middle shadow rounded">
+    <thead class="table-dark">
+      <tr>
+        <th>Screen</th>
+        <th>Date &amp; Time (IST)</th>
+        <th>Total Seats</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for show in shows %}
+      <tr>
+        <td>{{ show.screen_name }}</td>
+        <td>{% localtime on %}{{ show.date_time|date:"M d, Y, h:i a" }}{% endlocaltime %}</td>
+        <td>{{ show.total_seats }}</td>
+        <td>
+          <a href="{% url 'book-seat' show.id %}" class="btn btn-success btn-sm">Book Seat</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="4" class="text-center py-4 text-muted">No shows available for this movie.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
