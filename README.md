@@ -64,8 +64,17 @@ python manage.py runserver
 
 - **Signup:**  
   `POST /signup`  
-  Payload example:{ "username": "youruser", "password": "yourpass" }
+  `Payload example:{ "username": "youruser", "password": "yourpass" }`
 
 - **Login:**  
    `POST /login`  
-    Payload example:{ "username": "youruser", "password": "yourpass" }
+   `Payload example:{ "username": "youruser", "password": "yourpass" }`
+   `Response will provide JWT access and refresh tokens.`
+
+- **Use JWT in authenticated requests:**  
+   `Add in your HTTP headers:`  
+   `Authorization: Bearer <access-token>`
+- **Refresh Token:**  
+`POST /api/token/refresh/`  
+`Payload:{ "refresh": "<refresh-token>" }`
+`Response returns a new access token.`
