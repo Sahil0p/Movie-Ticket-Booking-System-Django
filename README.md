@@ -19,6 +19,53 @@ This repository contains a Django backend for a Movie Ticket Booking System feat
 
 ## 🚀 Setup Instructions
 
-1. **Clone the repository**
-   
-3. **Create and activate a virtual environment**
+### 1️⃣ Clone the repository
+```bash
+git clone https://github.com/Sahil0p/Movie-Ticket-Booking-System-Django
+cd Movie-Ticket-Booking-System-Django
+```
+
+### 2️⃣ Create and activate a virtual environment
+```bash
+python -m venv env
+
+# For Windows:
+env\Scripts\activate
+
+# For Mac/Linux:
+source env/bin/activate
+```
+
+### 3️⃣ Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 4️⃣ Apply migrations
+```bash
+python manage.py makemigrations  
+python manage.py migrate
+```
+
+
+### 4️⃣ Create superuser (optional)
+```bash
+python manage.py runserver
+```
+
+### 5️⃣ Create superuser (optional)
+```bash
+python manage.py runserver
+```
+
+---
+
+## 🔐 JWT Authentication & API Usage
+
+- **Signup:**  
+  `POST /signup`  
+  Payload example:{ "username": "youruser", "password": "yourpass" }
+
+- **Login:**  
+   `POST /login`  
+    Payload example:{ "username": "youruser", "password": "yourpass" }
