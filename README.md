@@ -126,26 +126,21 @@ movie-booking-system/
 
 ### 🚧 Development Approach
 
-- 🔐 **Authentication and Security:**
+- 🔐 **Authentication and Security:**  
 Custom signup and login endpoints issue JWT tokens for secure, protected API access. JWT middleware validates every request.
 
-- 🗃️ **Relational Data Models:**
+- 🗃️ **Relational Data Models:**  
+The \`Movie\`, \`Show\`, and \`Booking\` models capture all data with defined foreign keys. Each \`Booking\` is explicitly linked to a user and a show.
 
-The Movie, Show, and Booking models capture all data with defined foreign keys. Each (Booking) is explicitly linked to a user and a show.
-
-
-- ⚙️ **REST API Architecture:**
-
+- ⚙️ **REST API Architecture:**  
 The endpoints follow REST conventions, with POST used for mutations and GET for retrieval. The booking logic uses atomic transactions and retries to prevent concurrency issues.
 
-
 - ✅ **Business Rules Enforcement:**  
-
 The system ensures no double bookings or overbookings occur. Canceling a booking frees up seats efficiently. Input validation and error handling provide a pleasant user experience.
 
-
-- 📚 **Documentation and Testing:**
+- 📚 **Documentation and Testing:**  
 Complete Swagger docs detail each API endpoint's requests and responses, including JWT security. Modular and clean code ensures maintainability and testability.
+
 
 ---
 
