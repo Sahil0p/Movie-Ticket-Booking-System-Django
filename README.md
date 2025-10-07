@@ -133,13 +133,15 @@ movie-booking-system/
 
 ---
 
-## 🎯 Business Logic & Approach
+## 🎯 Approach
 
 ### ⚙️ Setup
 
-This project utilizes Python, Django, and the Django REST Framework to deliver a robust, API-first backend. All dependencies are captured in \`requirements.txt\`, with a recommended virtual environment for isolated installation.
-
-🗄️ Database migrations ensure the schema is prepared before running. The 🔐 JWT mechanism is employed to secure API endpoints while providing stateless authentication. 📝 Swagger integration facilitates seamless API exploration.
+- This project utilizes Python, Django, and the Django REST Framework to deliver a robust, API-first backend.
+- All dependencies are captured in \`requirements.txt\`, with a recommended virtual environment for isolated installation.
+- 🗄️ Database migrations ensure the schema is prepared before running.
+- The 🔐 JWT mechanism is employed to secure API endpoints while providing stateless authentication.
+- 📝 Swagger integration facilitates seamless API exploration.
 
 ### 🚧 Development Approach
 
